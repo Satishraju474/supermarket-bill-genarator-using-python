@@ -1,0 +1,86 @@
+from datetime import datetime
+
+name=input("Enter your name:")
+#LISTS OF ITEMS
+lists='''
+Rice    Rs 20/kg
+Sugar   Rs 30/kg
+Salt    Rs 20/kg
+Oil     Rs 80/liter
+Paneer  Rs 110/kg
+Maggi   Rs 50/kg
+Boost   Rs 90/kg
+colgate Rs 85/kg
+'''
+#DECLARATION
+price=0
+pricelist=[]
+totalprice=0
+Finalfinalprice=0
+ilist=[]
+qlist=[]
+plist=[]
+
+#RATES FOR ITEMS
+items={'rice':20,'sugar':30,
+'salt':20,'oil':80,
+'paneer':110,
+'maggi':50,'boost':90,
+'colgate':85}
+option=int(input("for list of items present in the shop press 1:"))
+if option==1:
+    print(lists)
+    for i in range(len(items)):
+        inp1=int(input("if you want to buy any items press 1 or 2 for exit:"))
+        if inp1==2:
+            break
+        elif inp1==1:
+            item=input("Enter your items:")
+            quantity=int(input("Enter quantity of item:"))
+            if item in items.keys():
+                price=quantity*(items[item])
+                pricelist.append((item,quantity,items,price))
+                totalprice+=price
+                ilist.append(item)
+                qlist.append(quantity)
+                plist.append(price)
+                gst=(totalprice*5)/100
+                finalamount=gst+totalprice
+            else:
+                print("sorry you entered item is not available")
+        else:
+            print("you entered wrong number")
+if finalamount!=0:
+    payment=(input('''mode of payment cash or phonepay or googlepay : '''))
+    if payment=='cash':
+        print("you choosed to pay through cash")
+    elif payment=='phonepay':
+        print("you choossed to pay through phonepay")
+    elif payment=='googlepay':
+        print("you choosed to pay through googlepay")
+    print("payment succesfull")
+    inp=input("can i bill the items yes or no:")  
+    if inp=='yes':
+        if finalamount!=0:
+            print('''
+              
+              
+              
+              ''')
+            print(25*"=","K.SATISH RAJU SUPERMARKET",25*"=")
+            print(28*" ","penakanametta")
+            print("Name:",name,30*" ","Date:",datetime.now())
+            print(75*"-")
+            print("sno",8*" ","items",8*" ","quantity",3*" ","price")
+            for i in range(len(pricelist)):
+                print(i+1  ,8*' ',ilist[i],8*'  ',qlist[i],3*'   ',plist[i])
+            print(75*"-")
+            print('TotalAmount:',50*' ','Rs',totalprice)
+            print('gst amount :',50*' ','Rs',gst)
+            print(75*"-")
+            print('finalamount:',50*' ','Rs',finalamount)
+            print('mode of payment:',50*' ',payment)
+            print(75*"-")
+            print(25*" ","THANKS FOR VISITING")
+            print(25*" ","   VISIT AGAIN")
+            print(75*"-")
